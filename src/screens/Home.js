@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, TextInput, Platform, TouchableOpacity, FlatList } from 'react-native'
+import { exp } from 'react-native/Libraries/Animated/Easing'
 import { Button } from '../components/Button'
 import { CardSkill } from '../components/CardSkill'
 
@@ -7,12 +8,21 @@ import { CardSkill } from '../components/CardSkill'
 export const Home = () => {
 
   const [newSkill, setNewSkill] = useState('')
-
   const [mySkills, setMySkills] = useState([])
+  const [greeting, setGreeting] = useState('')
+
 
   useEffect(() => {
-    console.log(mySkills)
-  }, [mySkills])
+    const currentHour = new Date().getHours()
+
+    if (currentHour <= 12) {
+      setGreeting('Good morning')
+    } else if (currentHour > 12 && currentHour <= 18) {
+      setGreeting('Good afternoon')
+    } else {
+      setGreeting('Good night')
+    }
+  }, [])
 
   const handleNewSkill = () => {
     if (newSkill) {
@@ -40,6 +50,9 @@ export const Home = () => {
     <View style={styles.container}>
       <Text style={styles.text}>
         Welcome, Renan!
+      </Text>
+      <Text style={styles.greeting}>
+        {greeting}
       </Text>
 
       <TextInput style={styles.input} placeholder='New Skill' placeholderTextColor='#555' onChangeText={setNewSkill} value={newSkill} />
@@ -84,5 +97,9 @@ const styles = StyleSheet.create(
       borderRadius: 7,
       marginTop: 30,
     },
+    greeting: {
+      color: '#fff',
+      marginTop: 10
+    }
   }
 )
