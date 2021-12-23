@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, TextInput, Platform, TouchableOpacity, ScrollView } from 'react-native'
+import { Button } from '../components/Button'
+import { CardSkill } from '../components/CardSkill'
 
 
 export const Home = () => {
@@ -26,15 +28,7 @@ export const Home = () => {
 
       <TextInput style={styles.input} placeholder='New Skill' placeholderTextColor='#555' onChangeText={setNewSkill} value={newSkill} />
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.7}
-        onPress={handleNewSkill}
-      >
-        <Text style={styles.buttonText}>
-          Add
-        </Text>
-      </TouchableOpacity>
+      <Button handlePress={handleNewSkill} />
 
       <Text style={[styles.text, { marginVertical: 30 }]}>
         My Skills
@@ -43,11 +37,7 @@ export const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {
           mySkills.map(skill => (
-            <TouchableOpacity style={styles.skillContainer} key={skill} activeOpacity={0.7}>
-              <Text style={styles.skillText}>
-                {skill}
-              </Text>
-            </TouchableOpacity>
+            <CardSkill skill={skill} key={skill} />
           ))
         }
       </ScrollView>
@@ -77,30 +67,5 @@ const styles = StyleSheet.create(
       borderRadius: 7,
       marginTop: 30,
     },
-    button: {
-      backgroundColor: '#a370f7',
-      padding: 15,
-      borderRadius: 7,
-      alignItems: 'center',
-      marginTop: 20
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: 17,
-      fontWeight: 'bold'
-    },
-    skillContainer: {
-      backgroundColor: '#1f1e25',
-      padding: 15,
-      borderRadius: 50,
-      alignItems: 'center',
-      marginTop: 20
-
-    },
-    skillText: {
-      color: '#fff',
-      fontSize: 22,
-      fontWeight: 'bold',
-    }
   }
 )
