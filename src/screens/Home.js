@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Platform, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TextInput, Platform, TouchableOpacity, FlatList } from 'react-native'
 import { Button } from '../components/Button'
 import { CardSkill } from '../components/CardSkill'
 
@@ -50,13 +50,14 @@ export const Home = () => {
         My Skills
       </Text>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {
-          mySkills.map(skill => (
-            <CardSkill skill={skill} deleteSkill={handleDeleteSkill} key={skill} />
-          ))
-        }
-      </ScrollView>
+      <FlatList
+        data={mySkills}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <CardSkill skill={item} deleteSkill={handleDeleteSkill} />
+        )}
+      />
+
     </View>
   )
 }
