@@ -4,13 +4,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-export const CardSkill = ({ skill }) => {
+export const CardSkill = ({ skill, deleteSkill }) => {
   return (
     <TouchableOpacity style={styles.skillContainer} key={skill} activeOpacity={0.7}>
       <Text style={styles.skillText}>
         {skill}
       </Text>
-      <Icon style={styles.delete} name="delete-outline" color="#ff3b1f" size={30} />
+      <Icon onPress={() => deleteSkill(skill)} style={styles.delete} name="delete-outline" color="#ff3b1f" size={30} />
     </TouchableOpacity>
   )
 }

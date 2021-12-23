@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, TextInput, Platform, TouchableOpacity, ScrollView } from 'react-native'
 import { Button } from '../components/Button'
 import { CardSkill } from '../components/CardSkill'
@@ -10,6 +10,10 @@ export const Home = () => {
 
   const [mySkills, setMySkills] = useState([])
 
+  useEffect(() => {
+    console.log(mySkills)
+  }, [mySkills])
+
   const handleNewSkill = () => {
     if (newSkill) {
       setMySkills(oldSkills => [...oldSkills, newSkill])
@@ -20,9 +24,17 @@ export const Home = () => {
   }
 
   const handleDeleteSkill = (skill) => {
+    const updateSkills = [...mySkills]
+
+    const skillExists = updateSkills.indexOf(skill)
+
+    if (skillExists >= 0) {
+      updateSkills.splice(skillExists, 1)
+      setMySkills([...updateSkills])
+
+    }
 
   }
-
 
   return (
     <View style={styles.container}>
@@ -41,7 +53,7 @@ export const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {
           mySkills.map(skill => (
-            <CardSkill skill={skill} key={skill} />
+            <CardSkill skill={skill} deleteSkill={handleDeleteSkill} key={skill} />
           ))
         }
       </ScrollView>
