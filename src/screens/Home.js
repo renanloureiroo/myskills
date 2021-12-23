@@ -19,6 +19,10 @@ export const Home = () => {
     }
   }
 
+  const handleDeleteSkill = (skill) => {
+
+  }
+
 
   return (
     <View style={styles.container}>
