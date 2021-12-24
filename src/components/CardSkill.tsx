@@ -3,20 +3,20 @@ import React from "react"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
 import { StyleSheet, Text, TouchableOpacity } from "react-native"
+import { Skill } from "../screens/Home"
 
 type CardSkillProps = {
-  skill: string
-  deleteSkill: (skill: string) => void
+  skill: {
+    id: string
+    skill: string
+  }
+  deleteSkill: ({}: Skill) => void
 }
 
 export const CardSkill = ({ skill, deleteSkill }: CardSkillProps) => {
   return (
-    <TouchableOpacity
-      style={styles.skillContainer}
-      key={skill}
-      activeOpacity={0.7}
-    >
-      <Text style={styles.skillText}>{skill}</Text>
+    <TouchableOpacity style={styles.skillContainer} activeOpacity={0.7}>
+      <Text style={styles.skillText}>{skill.skill}</Text>
       <Icon
         onPress={() => deleteSkill(skill)}
         style={styles.delete}
