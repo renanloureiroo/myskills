@@ -68,7 +68,7 @@ export const Home = () => {
         value={newSkill}
       />
 
-      <Button handlePress={handleNewSkill} />
+      <Button onPress={handleNewSkill} />
 
       <Text style={[styles.text, { marginVertical: 30 }]}>My Skills</Text>
 
