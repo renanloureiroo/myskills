@@ -71,6 +71,7 @@ export const Home = () => {
       <Button
         onPress={handleNewSkill}
         activeOpacity={0.7}
+        title="Add"
         disabled={newSkill ? false : true}
       />
 

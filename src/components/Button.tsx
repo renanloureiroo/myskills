@@ -6,10 +6,14 @@ import {
   TouchableOpacity,
 } from "react-native"
 
-export const Button = ({ ...rest }: TouchableOpacityProps) => {
+type ButtonProps = TouchableOpacityProps & {
+  title: string
+}
+
+export const Button = ({ title, ...rest }: ButtonProps) => {
   return (
     <TouchableOpacity style={styles.button} {...rest}>
-      <Text style={styles.buttonText}>Add</Text>
+      <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   )
 }
