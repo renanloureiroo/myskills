@@ -10,7 +10,7 @@ type CardSkillProps = {
     id: string
     skill: string
   }
-  deleteSkill: ({}: Skill) => void
+  deleteSkill: (id: string) => void
 }
 
 export const CardSkill = ({ skill, deleteSkill }: CardSkillProps) => {
@@ -18,7 +18,7 @@ export const CardSkill = ({ skill, deleteSkill }: CardSkillProps) => {
     <TouchableOpacity style={styles.skillContainer} activeOpacity={0.7}>
       <Text style={styles.skillText}>{skill.skill}</Text>
       <Icon
-        onPress={() => deleteSkill(skill)}
+        onPress={() => deleteSkill(skill.id)}
         style={styles.delete}
         name="delete-outline"
         color="#ff3b1f"

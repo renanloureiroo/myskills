@@ -44,16 +44,20 @@ export const Home = () => {
     }
   }
 
-  const handleDeleteSkill = (skill: Skill): void => {
-    const updateSkills = [...mySkills]
-
-    const skillExists = updateSkills.indexOf(skill)
-
-    if (skillExists >= 0) {
-      updateSkills.splice(skillExists, 1)
-      setMySkills([...updateSkills])
-    }
+  const handleDeleteSkill = (id: string) => {
+    setMySkills((oldSkills) => oldSkills.filter((skill) => skill.id !== id))
   }
+
+  // const handleDeleteSkill = (skill: Skill): void => {
+  //   const updateSkills = [...mySkills]
+
+  //   const skillExists = updateSkills.indexOf(skill)
+
+  //   if (skillExists >= 0) {
+  //     updateSkills.splice(skillExists, 1)
+  //     setMySkills([...updateSkills])
+  //   }
+  // }
 
   return (
     <View style={styles.container}>
@@ -78,6 +82,7 @@ export const Home = () => {
       <Text style={[styles.text, { marginVertical: 30 }]}>My Skills</Text>
 
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={mySkills}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
