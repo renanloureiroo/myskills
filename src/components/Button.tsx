@@ -8,7 +8,7 @@ import {
 
 export const Button = ({ ...rest }: TouchableOpacityProps) => {
   return (
-    <TouchableOpacity style={styles.button} activeOpacity={0.7} {...rest}>
+    <TouchableOpacity style={styles.button} {...rest}>
       <Text style={styles.buttonText}>Add</Text>
     </TouchableOpacity>
   )

@@ -68,7 +68,11 @@ export const Home = () => {
         value={newSkill}
       />
 
-      <Button onPress={handleNewSkill} />
+      <Button
+        onPress={handleNewSkill}
+        activeOpacity={0.7}
+        disabled={newSkill ? false : true}
+      />
 
       <Text style={[styles.text, { marginVertical: 30 }]}>My Skills</Text>
 
